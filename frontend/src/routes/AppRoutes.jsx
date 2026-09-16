@@ -9,11 +9,15 @@ import MentorDashboard from '../pages/mentor/MentorDashboard'
 import MentorStudents from '../pages/mentor/MentorStudents'
 import MentorSessions from '../pages/mentor/MentorSessions'
 import MentorProgress from '../pages/mentor/MentorProgress'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 function AppRoutes() {
 	return (
 		<Routes>
-			<Route path="/" element={<Navigate to="/student/dashboard" replace />} />
+			<Route path="/" element={<Navigate to="/login" replace />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/register" element={<Register />} />
 			<Route path="/student" element={<StudentLayout />}>
 				<Route path="dashboard" element={<StudentDashboard />} />
 				<Route path="sessions" element={<Sessions />} />
@@ -26,7 +30,7 @@ function AppRoutes() {
 				<Route path="sessions" element={<MentorSessions />} />
 				<Route path="progress" element={<MentorProgress />} />
 			</Route>
-			<Route path="*" element={<Navigate to="/student/dashboard" replace />} />
+			<Route path="*" element={<Navigate to="/login" replace />} />
 		</Routes>
 	)
 }
