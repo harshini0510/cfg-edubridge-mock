@@ -1,0 +1,2 @@
+function SessionCard({ session }) { return <article className={`session-card ${session.status}`}><div className="session-date"><strong>{session.date.split(',')[0]}</strong><span>{session.date.substring(session.date.indexOf(',') + 2)}</span></div><div className="session-info"><span className="tag">{session.type}</span><h3>{session.title}</h3><p>{session.time} <span className="dot">•</span> {session.mentor}</p></div><span className={`session-status ${session.status}`}>{session.status === 'completed' ? 'Completed' : 'Upcoming'}</span></article> }
+export default SessionCard
