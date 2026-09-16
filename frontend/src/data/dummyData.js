@@ -1,22 +1,40 @@
-export const student = { name: 'Aarav Mehta', firstName: 'Aarav', grade: 'Class 10', school: 'Riverside Community School', initials: 'AM' }
-export const attendance = { percentage: 92, attended: 23, total: 25 }
-export const mentor = { name: 'Dr. Priya Sharma', role: 'Science & Mathematics Mentor', initials: 'PS', nextAvailable: 'Today, 4:30 PM' }
+export const student = {
+  id: 'STU-1001',
+  name: 'Aarav Mehta',
+  course: 'Secondary School Education',
+  year: 'Class 10',
+  attendance: 92,
+  mentor: 'Dr. Priya Sharma',
+  overallProgress: 72,
+}
+
 export const upcomingSessions = [
-  { id: 1, title: 'Algebra: Quadratic Equations', date: 'Tue, 18 Jun', time: '4:00 PM - 5:00 PM', type: 'Mentoring session', mentor: 'Dr. Priya Sharma', status: 'upcoming' },
-  { id: 2, title: 'Physics: Motion & Forces', date: 'Thu, 20 Jun', time: '5:00 PM - 6:00 PM', type: 'Study group', mentor: 'Karan Malhotra', status: 'upcoming' },
-  { id: 3, title: 'Exam Preparation Check-in', date: 'Sat, 22 Jun', time: '11:00 AM - 11:30 AM', type: 'Mentoring session', mentor: 'Dr. Priya Sharma', status: 'upcoming' },
+  { id: 'SES-2001', subject: 'Mathematics: Quadratic Equations', mentor: 'Dr. Priya Sharma', date: '18 June 2024', time: '4:00 PM - 5:00 PM', mode: 'Video call', status: 'upcoming' },
+  { id: 'SES-2002', subject: 'Physics: Motion and Forces', mentor: 'Karan Malhotra', date: '20 June 2024', time: '5:00 PM - 6:00 PM', mode: 'Video call', status: 'upcoming' },
+  { id: 'SES-2003', subject: 'Exam Preparation Check-in', mentor: 'Dr. Priya Sharma', date: '22 June 2024', time: '11:00 AM - 11:30 AM', mode: 'In person', status: 'upcoming' },
 ]
+
 export const completedSessions = [
-  { id: 4, title: 'Introduction to Trigonometry', date: 'Sat, 15 Jun', time: '11:00 AM - 12:00 PM', type: 'Mentoring session', mentor: 'Dr. Priya Sharma', status: 'completed' },
-  { id: 5, title: 'Chemistry: The Periodic Table', date: 'Thu, 13 Jun', time: '5:00 PM - 6:00 PM', type: 'Study group', mentor: 'Nisha Kapoor', status: 'completed' },
+  { id: 'SES-1998', subject: 'Mathematics: Introduction to Trigonometry', mentor: 'Dr. Priya Sharma', date: '15 June 2024', time: '11:00 AM - 12:00 PM', mode: 'Video call', status: 'completed' },
+  { id: 'SES-1999', subject: 'Chemistry: The Periodic Table', mentor: 'Nisha Kapoor', date: '13 June 2024', time: '5:00 PM - 6:00 PM', mode: 'In person', status: 'completed' },
+  { id: 'SES-2000', subject: 'English: Writing Skills Workshop', mentor: 'Rohan Desai', date: '10 June 2024', time: '4:30 PM - 5:30 PM', mode: 'Video call', status: 'completed' },
 ]
-export const resources = [
-  { id: 1, title: 'Quadratic Equations: Practice Set', type: 'Worksheet', subject: 'Mathematics', progress: 70, accent: 'blue' },
-  { id: 2, title: 'Forces and Laws of Motion', type: 'Video lesson', subject: 'Physics', progress: 45, accent: 'green' },
-  { id: 3, title: 'The Periodic Table', type: 'Reading material', subject: 'Chemistry', progress: 100, accent: 'yellow' },
-  { id: 4, title: 'English Grammar Essentials', type: 'Interactive quiz', subject: 'English', progress: 25, accent: 'purple' },
+
+export const learningResources = [
+  { id: 'RES-3001', title: 'Quadratic Equations: Practice Set', type: 'Worksheet', category: 'Mathematics', progress: 70 },
+  { id: 'RES-3002', title: 'Forces and Laws of Motion', type: 'Video lesson', category: 'Physics', progress: 45 },
+  { id: 'RES-3003', title: 'The Periodic Table', type: 'Reading material', category: 'Chemistry', progress: 100 },
+  { id: 'RES-3004', title: 'English Grammar Essentials', type: 'Interactive quiz', category: 'English', progress: 25 },
 ]
+
 export const subjectProgress = [
-  { subject: 'Mathematics', score: 78, detail: 'On track', color: 'blue' }, { subject: 'Science', score: 64, detail: 'Keep going', color: 'green' },
-  { subject: 'English', score: 86, detail: 'Strong progress', color: 'yellow' }, { subject: 'Social Studies', score: 52, detail: 'Needs attention', color: 'orange' },
+  { id: 'SUB-4001', subject: 'Mathematics', progress: 78 },
+  { id: 'SUB-4002', subject: 'Science', progress: 64 },
+  { id: 'SUB-4003', subject: 'English', progress: 86 },
+  { id: 'SUB-4004', subject: 'Social Studies', progress: 52 },
 ]
+
+// Compatibility exports for the existing student dashboard components.
+export const attendance = { percentage: student.attendance, attended: 23, total: 25 }
+export const mentor = { name: student.mentor, role: 'Science & Mathematics Mentor', initials: 'PS', nextAvailable: 'Today, 4:30 PM' }
+export const resources = learningResources.map((resource) => ({ ...resource, subject: resource.category, accent: 'blue' }))
