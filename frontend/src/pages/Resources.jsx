@@ -1,4 +1,22 @@
 import ResourceCard from '../components/ResourceCard'
-import { resources } from '../data/dummyData'
-function Resources() { return <div className="page"><div className="page-heading"><div><p className="eyebrow blue-text">YOUR LIBRARY</p><h1>Learning resources</h1><p className="page-intro">Helpful material, ready whenever you are.</p></div></div><div className="resource-toolbar"><button className="filter-button active" type="button">All resources</button><button className="filter-button" type="button">Mathematics</button><button className="filter-button" type="button">Science</button><button className="filter-button" type="button">English</button></div><section className="resource-grid">{resources.map((resource) => <ResourceCard key={resource.id} resource={resource} />)}</section></div> }
+import { learningResources } from '../data/dummyData'
+
+function Resources() {
+	return (
+		<div className="page">
+			<div className="page-heading">
+				<div>
+					<p className="eyebrow blue-text">YOUR LIBRARY</p>
+					<h1>Learning resources</h1>
+					<p className="page-intro">Helpful material, ready whenever you are.</p>
+				</div>
+			</div>
+
+			<section className="resource-grid">
+				{learningResources.map((resource) => <ResourceCard key={resource.id} resource={resource} />)}
+			</section>
+		</div>
+	)
+}
+
 export default Resources
