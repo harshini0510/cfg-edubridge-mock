@@ -3,14 +3,18 @@ import ResourceCard from '../components/ResourceCard'
 import SessionCard from '../components/SessionCard'
 import StatCard from '../components/StatCard'
 import { learningResources, student, upcomingSessions } from '../data/dummyData'
+import { getCurrentUser } from '../utils/auth'
 
 function StudentDashboard() {
+	const currentUser = getCurrentUser()
+	const studentName = currentUser?.role === 'student' && currentUser.name ? currentUser.name : student.name
+
 	return (
 		<div className="page">
 			<div className="page-heading">
 				<div>
 					<p className="eyebrow blue-text">YOUR LEARNING HUB</p>
-					<h1>Good morning, {student.name}</h1>
+					<h1>Good morning, {studentName}</h1>
 					<p className="page-intro">Here is a quick look at your learning journey.</p>
 				</div>
 				<button className="primary-button" type="button">+ Book a session</button>

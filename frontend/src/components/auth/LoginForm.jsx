@@ -16,6 +16,27 @@ function LoginForm() {
       return
     }
 
+    const users = JSON.parse(localStorage.getItem('edubridge_users') || '[]')
+    if (users.length === 0) {
+      setError('No registered users found. Create an account first.')
+      return
+    }
+
+    const user = users.find((registeredUser) => (
+      registeredUser.email === email.trim().toLowerCase()
+      && registeredUser.password === password
+      && registeredUser.role === role
+    ))
+    if (!user) {
+      setError('Incorrect email, password, or role.')
+      return
+    }
+
+    localStorage.setItem('edubridge_current_user', JSON.stringify({
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    }))
     navigate(role === 'student' ? '/student/dashboard' : '/mentor/dashboard')
   }
 

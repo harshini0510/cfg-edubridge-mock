@@ -2,12 +2,16 @@ import { Link } from 'react-router-dom'
 import MentorSessionCard from '../../components/mentor/MentorSessionCard'
 import MentorStatCard from '../../components/mentor/MentorStatCard'
 import { mentor, mentorStats, recentActivity, assignedStudents, upcomingMentorSessions } from '../../data/mentorDummyData'
+import { getCurrentUser } from '../../utils/auth'
 
 function MentorDashboard() {
+  const currentUser = getCurrentUser()
+  const mentorName = currentUser?.role === 'mentor' && currentUser.name ? currentUser.name : mentor.name
+
   return (
     <div className="mentor-page">
       <div className="mentor-page-heading">
-        <div><p className="mentor-eyebrow">MENTOR WORKSPACE</p><h1>Good morning, {mentor.name}</h1><p>Here is an overview of your students and sessions.</p></div>
+        <div><p className="mentor-eyebrow">MENTOR WORKSPACE</p><h1>Good morning, {mentorName}</h1><p>Here is an overview of your students and sessions.</p></div>
         <button className="mentor-primary-button" type="button">+ Schedule session</button>
       </div>
 

@@ -7,7 +7,7 @@ function getInitials(name) {
 		.toUpperCase()
 }
 
-function Navbar({ studentName = 'Student', onLogout }) {
+function Navbar({ studentName = 'Student', studentEmail = '', onLogout }) {
 	return (
 		<header className="topbar">
 			<a className="brand" href="/student/dashboard" aria-label="EduBridge dashboard">
@@ -17,7 +17,7 @@ function Navbar({ studentName = 'Student', onLogout }) {
 			<div className="topbar-actions">
 				<div className="profile-summary">
 					<span className="avatar avatar-small">{getInitials(studentName)}</span>
-					<span className="profile-name">{studentName}</span>
+					<div className="profile-summary-details"><span className="profile-name">{studentName}</span>{studentEmail && <span className="profile-email">{studentEmail}</span>}</div>
 				</div>
 				<button className="logout-button" type="button" onClick={onLogout}>Log out</button>
 			</div>
