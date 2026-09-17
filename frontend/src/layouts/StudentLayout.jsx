@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import MessageMentorModal from '../components/MessageMentorModal'
 import Sidebar from '../components/Sidebar'
@@ -7,6 +7,7 @@ import StudentSessionModal from '../components/StudentSessionModal'
 import { getCurrentUser } from '../utils/auth'
 
 function StudentLayout() {
+  const navigate = useNavigate()
   const [backendStudent, setBackendStudent] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
@@ -99,7 +100,10 @@ function StudentLayout() {
       setSessionsLoading(false)
     }
   }
-
+function handleLogout() {
+  localStorage.removeItem('edubridge_current_user')
+  navigate('/login')
+}
   const outletContext = {
     student,
     isLoading,
@@ -117,7 +121,11 @@ function StudentLayout() {
       <div className="app-body">
         <Sidebar onMessageMentor={() => setActiveModal('message')} />
         <main className="main-content">
-          <Navbar studentName={student.name} studentEmail={student.email} />
+          <Navbar
+  studentName={student.name}
+  studentEmail={student.email}
+  onLogout={handleLogout}
+/>
           <Outlet context={outletContext} />
         </main>
       </div>
