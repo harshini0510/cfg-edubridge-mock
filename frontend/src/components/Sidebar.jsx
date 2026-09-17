@@ -6,7 +6,7 @@ const defaultLinks = [
 	{ to: '/student/progress', label: 'Progress', icon: '↗' },
 ]
 
-function Sidebar({ links = defaultLinks }) {
+function Sidebar({ links = defaultLinks, onMessageMentor }) {
 	return (
 		<aside className="sidebar">
 			<nav aria-label="Main navigation">
@@ -26,7 +26,7 @@ function Sidebar({ links = defaultLinks }) {
 				<span className="help-icon">?</span>
 				<strong>Need a hand?</strong>
 				<p>Your mentor is here to help you reach your goals.</p>
-				<button type="button">Message mentor</button>
+				<button type="button" onClick={onMessageMentor}>Message mentor</button>
 			</div>
 		</aside>
 	)

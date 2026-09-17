@@ -73,6 +73,18 @@ button:focus-visible, a:focus-visible {
   min-width: 3px;
 }
 
+.modal-backdrop { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(23, 43, 77, .28); }
+.modal-panel { width: min(100%, 470px); max-height: calc(100vh - 40px); overflow-y: auto; padding: 25px; border: 1px solid var(--line); border-radius: 9px; background: white; box-shadow: 0 18px 50px rgba(30, 62, 100, .2); }
+.message-modal { width: min(100%, 520px); }
+.modal-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }.modal-heading h2 { margin: 0; color: var(--navy); font-size: 20px; }.modal-heading .eyebrow { margin-bottom: 8px; }
+.modal-close { padding: 0 4px; border: 0; color: var(--muted); background: transparent; font-size: 25px; line-height: 1; }.modal-close:hover { color: var(--navy); }
+.modal-form, .message-form { display: grid; gap: 8px; }.modal-form label, .message-form label { color: var(--navy); font-size: 12px; font-weight: 700; }.modal-form input, .modal-form select, .message-form textarea { width: 100%; box-sizing: border-box; padding: 10px 11px; border: 1px solid #cfd8e4; border-radius: 6px; color: var(--navy); background: #fbfcfe; font: inherit; font-size: 13px; outline: none; }.modal-form input:focus, .modal-form select:focus, .message-form textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(33, 103, 213, .12); }.message-form textarea { resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }.modal-actions .secondary-button { width: auto; padding-inline: 15px; }.modal-actions .primary-button { padding-inline: 15px; }.modal-form button:disabled, .message-form button:disabled { cursor: not-allowed; opacity: .6; }
+.form-error, .form-success { margin: 0 0 12px; padding: 9px 11px; border-radius: 5px; font-size: 12px; line-height: 1.4; }.form-error { border: 1px solid #f0c3bc; color: #a4493d; background: #fff4f2; }.form-success { border: 1px solid #b9dfce; color: #177453; background: #f2faf6; }.modal-muted { margin: 0; color: var(--muted); font-size: 12px; }
+.message-list { display: grid; gap: 9px; max-height: 280px; overflow-y: auto; margin-bottom: 18px; padding: 4px 2px; }.message-bubble { max-width: 82%; padding: 10px 12px; border-radius: 8px; color: var(--navy); background: #f1f4f7; }.message-bubble.sent { justify-self: end; background: var(--blue-soft); }.message-bubble strong { display: block; margin-bottom: 4px; font-size: 11px; }.message-bubble p { margin: 0; font-size: 12px; line-height: 1.45; }.message-form .primary-button { justify-self: end; margin-top: 4px; }
+.session-status-control, .conversation-select { margin-top: 6px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 5px; color: var(--navy); background: white; font-size: 11px; }
+.details-subheading { margin: 20px 0 10px; color: var(--navy); font-size: 13px; }.details-session-list { display: grid; gap: 8px; }.details-session-list p { margin: 0; color: var(--muted); font-size: 11px; }.details-session-list strong { color: var(--navy); }
+
 @media (max-width: 1100px) {
   .page { padding-inline: 30px; }
   .topbar { padding-inline: 28px; }

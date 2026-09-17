@@ -35,6 +35,7 @@ function RegisterForm() {
     }
 
     users.push({
+      id: `${form.role}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       name: form.name.trim(),
       email,
       password: form.password,
