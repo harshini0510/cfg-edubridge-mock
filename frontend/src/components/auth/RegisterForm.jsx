@@ -18,12 +18,30 @@ function RegisterForm() {
       setError('Complete every field and choose a role to continue.')
       return
     }
+    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      setError('Enter a valid email address.')
+      return
+    }
     if (form.password !== form.confirmPassword) {
       setError('Passwords do not match.')
       return
     }
 
-    navigate('/login')
+    const email = form.email.trim().toLowerCase()
+    const users = JSON.parse(localStorage.getItem('edubridge_users') || '[]')
+    if (users.some((user) => user.email === email)) {
+      setError('An account with this email already exists.')
+      return
+    }
+
+    users.push({
+      name: form.name.trim(),
+      email,
+      password: form.password,
+      role: form.role,
+    })
+    localStorage.setItem('edubridge_users', JSON.stringify(users))
+    navigate('/login', { state: { message: 'Account created successfully. You can now log in.' } })
   }
 
   return (
